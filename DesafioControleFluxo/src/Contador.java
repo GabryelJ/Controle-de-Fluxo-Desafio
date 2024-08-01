@@ -25,6 +25,7 @@ public class Contador {
                 System.out.print("Digite o segundo parametro: ");
                 parametroDois = terminal.nextInt();
                 entradaValida = true;
+                contar(parametroUm, parametroDois);
             } catch (InputMismatchException exception) {
                 System.out.println("Insira um numero.");
                 System.out.println("Tente novamente: ");
@@ -32,9 +33,6 @@ public class Contador {
                 parametroUm = -99;
                 parametroDois = -99;
                 terminal.nextLine();
-            }
-            try {
-                contar(parametroUm, parametroDois);
             } catch (ParametrosInvalidosException exception) {
                 System.out.println("O segundo parametro deve ser maior que o primeiro.");
                 System.out.println("Tente novamente: ");
