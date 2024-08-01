@@ -4,7 +4,7 @@ public class Contador {
 
     public static void contar(int primeiroParametro, int segundoParametro) throws ParametrosInvalidosException{
         if (primeiroParametro > segundoParametro){
-            throw new ParametrosInvalidosException();
+            throw new ParametrosInvalidosException("O segundo parâmetro deve ser maior que o primeiro.");
         }
         else {
             for (int i = 1; i <= (segundoParametro - primeiroParametro); i++){
@@ -28,17 +28,19 @@ public class Contador {
                 contar(parametroUm, parametroDois);
             } catch (InputMismatchException exception) {
                 System.out.println("Insira um numero.");
-                System.out.println("Tente novamente: ");
+                System.out.println("Tente novamente. ");
                 entradaValida = false;
                 parametroUm = -99;
                 parametroDois = -99;
                 terminal.nextLine();
             } catch (ParametrosInvalidosException exception) {
-                System.out.println("O segundo parametro deve ser maior que o primeiro.");
-                System.out.println("Tente novamente: ");
+                System.out.println(exception.getMessage());
+                System.out.println("Tente novamente. ");
                 entradaValida = false;
                 parametroUm = -99;
                 parametroDois = -99;
+            }catch (RuntimeException exception){
+                System.out.println("Erro inesperado. ");
             }
         }
         terminal.close();
